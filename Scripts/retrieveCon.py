@@ -22,7 +22,7 @@ class NetworkConnection:
 
 def retrieveConnections():
     try:
-        cmd = ["netstats", "-ano", "-p",  "tcp"]
+        cmd = ["netstat", "-ano", "-p",  "tcp"]
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, text=True, bufsize=1)
 
         print(f"[i] Executing command: {' '.join(cmd)}")
@@ -32,7 +32,7 @@ def retrieveConnections():
             lines.append(line.strip())
 
         return_code = proc.wait()
-        print(f"[i] Process finished with return code: {return_code}")
+        print(f"[i] Process finished with return code: {return_code}\n")
 
         # print("[i] Output: ")
 
@@ -67,6 +67,6 @@ if __name__ == "__main__":
 
         con.printConnection()
 
-
+    print(f"\n[i] {NetCons.__len__()} total connections...")
     print(f"[i] We have {listenCount} listening connection...")
     print(f"[i] We have {establCount} established connnections...")
